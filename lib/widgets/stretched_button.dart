@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class StretchedButton extends StatelessWidget {
-  const StretchedButton({super.key});
+  const StretchedButton(
+      {super.key, required this.text, required this.onPressFunc});
+
+  final String text;
+  final Function() onPressFunc;
 
   @override
   Widget build(BuildContext context) {
@@ -9,16 +13,16 @@ class StretchedButton extends StatelessWidget {
       children: [
         Expanded(
           child: TextButton(
-              onPressed: () {},
+              onPressed: onPressFunc,
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Theme.of(context).colorScheme.primaryContainer),
+                    borderRadius: BorderRadius.circular(8),
+                    color: Theme.of(context).colorScheme.inversePrimary),
                 height: 40,
                 alignment: Alignment.center,
                 child: Text(
-                  'Login',
+                  text,
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge!
